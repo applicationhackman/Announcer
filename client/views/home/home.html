@@ -1,0 +1,24 @@
+ 
+
+<template name="home">
+
+currentUser :: {{currentUser}} 
+
+	  <main>
+ 
+        {{#if currentUser}}
+          {{#linkTo route='logout'}}
+            Logout
+          {{/linkTo}}
+        {{else}}
+          {{#linkTo route='login'}}
+            Login
+          {{/linkTo}}
+        {{/if}}
+   
+  </main>
+
+
+		
+
+</template>

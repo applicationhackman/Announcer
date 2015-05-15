@@ -1,0 +1,84 @@
+<template name="pages">
+
+	<div class="fx fh fw fxc" id="pages">
+
+				<div class="bcrumbrow">
+
+				{{#with home}}
+
+					<a class="bcrumb" href="{{pathFor 'pages' _id}}">
+							<div class="fx fctr fh fxmid">
+								<i class="fa fa-folder"></i>
+								<div class="details"> {{Name}}  </div>
+							</div>
+					</a>
+
+				{{/with}}
+
+			    {{#each this.breadcrumbs}}
+
+				  	<a class="bcrumb" href="{{pathFor 'pages' _id}}">
+							<div class="fx fctr fh fxmid">
+								<i class="fa fa-folder"></i>
+								<div class="details"> {{Name}}  </div>
+							</div>
+					</a>
+
+			    {{/each}}
+
+			   </div>
+
+
+				<div class="fh fw">
+
+					{{#each this.children}}
+
+							{{> pagefolder this}}
+
+					{{/each}}
+
+				
+
+
+					{{#each this.pages}}
+
+							<a class="folder-card" cmenu="addfolder" href="{{pathFor 'landingpage' _id}}">
+									<div class="fx fctr fh fxmid fxc">
+										<i class="fa fa-list-alt flist"></i>
+										<div class="details"> {{Name}} </div>
+									</div>
+							</a>
+
+					{{/each}}
+
+
+
+
+
+				</div>
+
+
+
+
+	</div>
+
+
+	 <div class="col-md-6" style="display:none">
+	 		{{> addfolder}}
+	 </div>
+
+
+</template>
+
+
+
+<template name="pagefolder">
+
+	<a class="folder-card" cmenu="addfolder" href="{{pathFor 'pages' _id}}">
+			<div class="fx fctr fh fxmid fxc">
+				<i class="fa fa-folder folder"></i>
+				<div class="details"> {{Name}} </div>
+			</div>
+	</a>
+
+</template>

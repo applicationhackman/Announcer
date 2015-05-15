@@ -1,0 +1,58 @@
+<template name="mails"> 
+
+	<div class="fx fh fw fxc">
+		 
+		
+				
+				
+				<div class="bcrumbrow">    
+						
+				{{#with home}} 
+
+					<a class="bcrumb" href="{{pathFor 'leads' _id}}">	  
+							<div class="fx fctr fh fxmid">   
+								<i class="fa fa-folder"></i> 
+								<div class="details"> {{Name}}  </div>  
+							</div>  			 
+					</a>  
+
+				{{/with}}
+				 	
+			    {{#each this.breadcrumbs}}
+			      				  	
+				  	<a class="bcrumb" href="{{pathFor 'leads' _id}}">	  
+							<div class="fx fctr fh fxmid">   
+								<i class="fa fa-folder"></i> 
+								<div class="details"> {{Name}}  </div>  
+							</div>  			 
+					</a> 
+			 
+			    {{/each}}   
+
+			   </div> 
+			   
+
+				<div class="fh fw"> 
+
+					{{#each this.children}}		   	 
+						{{> folder this}}   
+					{{/each}}
+
+					
+				</div>
+
+
+		
+
+	</div>
+
+	
+	 <div class="col-md-6" style="display:none">   
+	 		{{> addfolder}}  	 
+	 </div> 
+			
+	 
+</template>
+  
+
+

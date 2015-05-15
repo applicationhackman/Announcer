@@ -1,0 +1,89 @@
+<template name="quickleadadd">
+
+
+<div id="leadlistchooser" style="display:none;height:200px;">
+
+  <div class="bcrumbrow">
+
+  {{#with home}}
+
+    <a class="bcrumb">
+        <div class="fx fctr fh fxmid">
+          <i class="fa fa-folder"></i>
+          <div class="details"> {{Name}}  </div>
+        </div>
+    </a>
+
+  {{/with}}
+
+    {{#each this.breadcrumbs}}
+
+      <a class="bcrumb" href="{{pathFor 'leads' _id}}">
+        <div class="fx fctr fh fxmid">
+          <i class="fa fa-folder"></i>
+          <div class="details"> {{Name}}  </div>
+        </div>
+    </a>
+
+    {{/each}}
+
+   </div>
+
+
+  <div class="fh fw scroll">
+
+    {{#each this.children}}
+        <div class="folder-card">
+            <div class="fx fctr fh fxmid fxc">
+              <i class="fa fa-folder folder"></i>
+              <div class="details"> {{Name}} </div>
+            </div>
+        </div>
+    {{/each}}
+
+    {{#each this.lists}}
+
+        <div class="folder-card">
+          <div class="flist-c">
+            <i class="fa fa-list-alt flist"></i>
+          </div>
+
+          <div class="details"> {{Name}}  </div>
+        </div>
+
+    {{/each}}
+
+
+  </div>
+
+</div>
+
+
+  
+
+  <div class="intoolbar fx">
+    {{> subscribersactionback}} 
+    <div class="toolbardetail">
+        <div class="tlhead">{{list.Name}}</div> 
+    </div>
+    
+  </div>
+  <div class="row row fx fctr macont">
+      
+
+      <div class="panel panel-default fw leadform">
+        <div class="panel-heading">
+          <h4> Add Subscriber </h4> 
+        </div>
+        <div class="panel-body">
+          
+
+            {{> quickForm id="fields1"   template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" type="insert"  schema=Schemas.Person collection=Collections.People}}  
+ 
+        </div> 
+      </div> 
+
+
+  </div>
+
+</template>

@@ -1,0 +1,54 @@
+<template name="subscribersinfo"> 
+
+ 
+  {{> subscribersaction}}
+ <div class="row row fx fctr macont">
+      
+
+      <div class="panel panel-default fw leadform">
+        <div class="panel-heading">
+          <h4>  Subscriber Info </h4> 
+        </div>
+        <div class="panel-body">
+  
+      
+
+
+			{{> quickForm id="fields1"   template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" type="update"  schema=Schemas.Person collection=Collections.People doc=subscriber autosave=true   class="infoview"}}                        
+ 
+        </div> 
+      </div> 
+
+
+  </div>
+
+	 
+
+	
+
+</template>
+
+
+<template name="subscribersaction"> 
+
+  <div class="intoolbar fx">
+  
+      {{> subscribersactionback}}     
+
+      <div class="add-sub act-btn">
+        <i class="fa fa-user-plus tico"></i> <span> Add </span>   
+      </div>
+      <div class="trash-sub act-btn">
+        <i class="fa fa-trash tico"></i> <span> Delete</span>   
+      </div>
+  </div> 
+
+
+</template>
+
+
+<template name="subscribersactionback">
+    <div class="bck act-btn span-btn"> 
+        <i class="fa fa-arrow-left tico"></i> <span>  </span>    
+      </div>
+</template>

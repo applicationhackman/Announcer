@@ -1,0 +1,36 @@
+<template name="forms">
+  
+
+      <div class="row row fx fctr macont">
+      
+      
+     <div class="fx fxc scroll formtoolbar">
+
+      {{#each formPrefields}}
+
+      <div class="pre-field ">
+          {{this}}
+       </div> 
+        
+
+      {{/each}}
+       
+     </div>    
+      
+
+      <div class="panel panel-default fw leadform">
+        <div class="panel-heading">
+          <h4> Add Subscriber </h4> 
+        </div>
+        <div class="panel-body">           	
+
+
+            {{> quickForm id="fields1"   template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" type="insert"  schema=form collection=Collections.People}}  
+ 
+        </div> 
+      </div> 
+
+
+  </div>
+  
+</template>

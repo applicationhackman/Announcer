@@ -1,0 +1,33 @@
+<template name="lists">
+
+  
+  <div class="intoolbar fx">
+  
+      <div class="bck act-btn span-btn">
+        <i class="fa fa-arrow-left tico"></i> <span>  </span>    
+      </div>
+      <div class="add-sub act-btn">
+        <i class="fa fa-user-plus tico"></i> <span> Add </span>   
+      </div>
+      <div class="trash-sub act-btn">
+        <i class="fa fa-trash tico"></i> <span> Delete</span>   
+      </div>
+  </div>
+	<div class="row">       
+  <div class="listingtable">
+    
+      {{> reactiveTable collection=people settings=tableSettings}}
+  </div>
+    
+	</div>
+	 
+  {{> dialogconfirm}} 
+
+</template>
+
+
+<template name="dialogconfirm">
+  <div id="dialog-confirm" title="Are you sure want to delete subscriber?" style="display:none">  
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+  </div>
+</template>

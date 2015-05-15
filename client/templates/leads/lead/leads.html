@@ -1,0 +1,156 @@
+<template name="leads">
+
+	<div class="fx fh fw fxc" id="leads">
+
+
+
+
+				<div class="bcrumbrow">
+
+				{{#with home}}
+
+					<a class="bcrumb" href="{{pathFor 'leads' _id}}">
+							<div class="fx fctr fh fxmid">
+								<i class="fa fa-folder"></i>
+								<div class="details"> {{Name}}  </div>
+							</div>
+					</a>
+
+				{{/with}}
+
+			    {{#each this.breadcrumbs}}
+
+				  	<a class="bcrumb" href="{{pathFor 'leads' _id}}">
+							<div class="fx fctr fh fxmid">
+								<i class="fa fa-folder"></i>
+								<div class="details"> {{Name}}  </div>
+							</div>
+					</a>
+
+			    {{/each}}
+
+			   </div>
+
+
+				<div class="fh fw scroll">
+
+					{{#each this.children}}
+						{{> folder this}}
+					{{/each}}
+
+					{{#each this.lists}}
+
+					{{> list this}}
+
+					{{/each}}
+
+
+				</div>
+
+
+
+
+	</div>
+
+	<div class="detailview">
+
+
+
+		{{#with last}} 
+
+				{{> detailfolder}}  
+
+		{{/with}}
+
+
+
+
+	</div>
+
+	 <div class="col-md-6" style="display:none">
+	 		{{> addfolder}}
+	 </div>
+
+
+</template>
+
+
+<template name="detailfolder">
+	<div class="fx frap"> 
+			<a class="fx frap" > 
+						<i class="fa fa-folder folder fprev"></i>
+						<div class="details fx fxmid finfo"> {{Name}} </div>
+			</a>
+
+			<div class="fx frap"> 
+
+				<div class="fx fxc ">
+					<div class="fx detRow frap">
+						<div class="fx2 b">
+								Created By :
+							</div>
+							<div class="fx2">
+								{{CreatedBy}}
+							</div>
+					</div>
+					<div class="fx detRow frap">
+						<div class="fx2 b">
+								Modified By :
+							</div>
+							<div class="fx2">
+								{{ModifiedBy}}
+							</div>
+					</div>
+				</div>
+				<div class="fx fxc ">
+					<div class="fx detRow frap">
+						<div class="fx2 b">
+								Created on :
+							</div>
+							<div class="fx2 frap">
+								{{CreatedTime}}
+							</div>
+					</div>
+					<div class="fx detRow frap">  
+							<div class="fx2 b">
+								Modified on :
+							</div>
+							<div class="fx2">
+								{{ModifiedTime}}
+							</div>
+					</div>
+				</div>
+
+			</div>
+
+	</div>
+
+</template>
+
+
+<template name="folder">
+
+	<a class="folder-card"  href="{{pathFor 'leads' _id}}">
+			<div class="fx fctr fh fxmid fxc">
+				<i class="fa fa-folder folder"></i>
+				<div class="details"> {{Name}} </div>
+			</div>
+	</a>
+
+</template>
+
+
+<template name="list"> 
+	<div class="folder-card " cmenu="addlist">
+
+			<a class="fx fctr fh fxmid fxc"  href="{{pathFor 'lists' _id}}">  
+				<div class="flist-c">
+					<i class="fa fa-list-alt flist"></i>
+				</div>
+
+				<div class="details"> {{Name}}  </div>
+			</a>
+
+
+	</div>
+</template>

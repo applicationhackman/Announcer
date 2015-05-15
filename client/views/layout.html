@@ -1,0 +1,26 @@
+<template name="layout">
+<div class="fx fh fw fxc"> 
+  {{> header}}
+  
+  {{> yield}}
+  </div>
+</template>
+
+<template name="header">
+
+        <div class="fx header"> 
+	        <div class="fx2 fx"> 
+	        	<i class="fa fa-bullhorn ">  </i>   
+	        	<div class='logo'> Announcer </div> 
+
+	        </div>
+	        <div class="fx2">  
+		        {{#if currentUser}}
+		          {{> loginButtons}}
+		        {{/if}}
+	        </div> 
+        </div> 
+    
+      
+
+</template>
