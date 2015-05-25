@@ -37,6 +37,33 @@ Pages.allow({
 });
 
 
+Mails.allow({   
+  insert: function () {
+    return true;
+  },
+  update: function () {
+    return true;
+  },
+  remove: function () {
+    return true;
+  }
+});
+
+
+
+WebForms.allow({   
+  insert: function () {
+    return true;
+  },
+  update: function () {
+    return true;
+  },
+  remove: function () {
+    return true;
+  }
+});
+
+
 
 Folders.allow({
   insert: function () {
@@ -51,6 +78,19 @@ Folders.allow({
 });
 
 FormsCollections.allow({ 
+  insert: function () {
+    return true;
+  },
+  update: function () {
+    return true;
+  },
+  remove: function () {
+    return true;
+  }
+});
+
+ 
+CampaignSettings.allow({  
   insert: function () {
     return true;
   },

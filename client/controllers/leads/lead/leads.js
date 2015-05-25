@@ -1,20 +1,8 @@
+var SourceFolder = "Subscribers";
+
+
 Template.leads.helpers({
   folders: function () {
-
-
-
-  		// var Leads = Folders.findOne({"Name":"Subscribers"});
-
-  		// console.log(Leads === undefined," leads folder is ",Leads);
-
-  		// if(Leads === undefined)
-  		// {
-
-  		// 	Folders.insert({Name:"Subscribers",CreatedBy:"Admin",ModifiedBy:"Admin",CreatedTime:new Date().toDateString(),ModifiedTime:new Date().toDateString(),children:[],parents:[]});
-
-  		// }   
-
-  		// Router.go('leads', Folders.findOne());
 
 
     return Lists.find();
@@ -26,6 +14,8 @@ Template.leads.helpers({
 
 
 LeadsController = RouteController.extend({
+
+    sourceFolder  : "Subscribers"
 
 });
 
@@ -59,12 +49,22 @@ Template.leads.onRendered(function () {
               {
                   icon: 'glyphicon-list',
                   text: 'Create form',
+                  action: Folder.createForm
+              },
+              {
+                  icon: 'glyphicon-list',
+                  text: 'Create page',
                   action: Folder.createPage
               },
               {
                   icon: 'glyphicon-list',
-                  text: 'Create list', 
-                  action: Folder.createList
+                  text: 'Create list',     
+                  action: Folder.createList 
+              },
+              {
+                  icon: 'glyphicon-list',
+                  text: 'Create Mail', 
+                  action: Folder.createMail
               }
 
 
@@ -72,25 +72,19 @@ Template.leads.onRendered(function () {
       };
 
 
- 
 
     context.attach($("#leads"), pagefoldermenu);
-
-    console.log("leads is here ",$("#leads"));
+    
 
 });
 
 
 Meteor.startup( function () {
 
-    // console.log(LeadsController," CSK testing lead ");
-
-
     Router.route('leads', {path: 'subscribers/:_id',  
       controller : LeadsController,
     	data: test, 
      });
-
  
 
 

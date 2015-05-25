@@ -1,11 +1,13 @@
 var paramId;
+var subscriberdata;  
 
 Template.subscribersinfo.helpers({  
 
 	subscriber : function(){	
 
-		// console.log(paramId," found subscriber ",People.findOne(paramId));  
-		return People.findOne(paramId);
+		console.log(paramId," found subscriber ",People.findOne(paramId));   
+		subscriberdata = People.findOne(paramId)
+		return subscriberdata;
 	}
 
 
@@ -19,6 +21,18 @@ Template.subscribersinfo.onRendered(function () {
       $("[for="+$("[name='maplist']").attr("id")+"]").hide();        
 
 
+})
+
+Template.subscribersinfo.events({
+
+	'click .add-sub' : function(){
+
+      console.log(subscriberdata.maplist," Add subscribe ",paramId); 
+
+      Router.go("quickleadadd",{"_id":subscriberdata.maplist});    
+      
+
+  },
 })
 
 

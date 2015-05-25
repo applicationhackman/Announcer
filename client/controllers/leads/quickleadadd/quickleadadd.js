@@ -5,8 +5,9 @@ var list;
 Template.quickleadadd.helpers({
   people: function () {
 
-    console.log("quickleadadd has been loading ");  
-    return People.find();
+    alert("quickleadadd has been loading ");  
+
+    // return People.find();
   },
   list : function() {
      
@@ -20,6 +21,7 @@ Template.quickleadadd.onRendered(function () {
       $("[name='maplist']").val(listid);   
       $("[name='maplist']").parent().hide();
       $("[for="+$("[name='maplist']").attr("id")+"]").hide();  
+      
       console.log(listid," quickleadadd loading ",$("[name='maplist']"));   
 
 

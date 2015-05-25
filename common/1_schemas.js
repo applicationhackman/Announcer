@@ -21,14 +21,14 @@ Meteor.isClient && Template.registerHelper("Schemas", Schemas);
 //     optional: true
 //   },
 //   subscribe: {
-//     type: Boolean,  
+//     type: Boolean,
 //     optional: true
 //   }
 
 
 // });
 
- 
+
 
 Schemas.Folder = new SimpleSchema({
   Name: {
@@ -83,11 +83,11 @@ Schemas.Folder = new SimpleSchema({
   }
 
   ,
-  forms: {
+  webforms: {
     type: Array,
     optional: true
   },
-  'forms.$': {
+  'webforms.$': {
     type: String
   }
 
@@ -137,6 +137,83 @@ Schemas.Page = new SimpleSchema({
   ModifiedTime : {
       type: Date,
       optional: true
+  },
+  Type  : {
+      type: String,
+      optional: true
+  }, parents: {
+    type: Array,
+    optional: true
+  },
+  'parents.$': {
+    type: String
+  },
+});
+
+
+Schemas.WebForms = new SimpleSchema({   
+  Name: {
+    type: String,
+    index: 1,
+    optional: true
+  },
+  CreatedBy : {
+      type: String,
+      optional: true
+  },
+  ModifiedBy : {
+      type: String,
+      optional: true
+  },
+  CreatedTime : {
+      type: Date,
+      optional: true
+  },
+  ModifiedTime : {
+      type: Date,
+      optional: true
+  },
+  data : {   
+      type: String,
+      optional: true      
+  },
+  Type  : {
+      type: String,
+      optional: true
+  }, parents: {
+    type: Array,
+    optional: true
+  },
+  'parents.$': {
+    type: String
+  },
+});
+
+Schemas.Mails = new SimpleSchema({   
+  Name: {
+    type: String,
+    index: 1,
+    optional: true
+  },
+  CreatedBy : {
+      type: String,
+      optional: true
+  },
+  ModifiedBy : {
+      type: String,
+      optional: true
+  },
+  CreatedTime : {
+      type: Date,
+      optional: true
+  },
+  ModifiedTime : {
+      type: Date,
+      optional: true 
+  },
+  data : {   
+      type: String,
+      optional: true      
   },
   Type  : {
       type: String,
@@ -218,14 +295,10 @@ json.Person = {
     optional: true
   },
   mail: {
-    type: 'email',        
+    type: 'email',
   },
   age: {
     type: Number,
-    optional: true
-  },
-  subscribe: {
-    type: Boolean,  
     optional: true
   },
   phone: {
@@ -255,11 +328,11 @@ json.Person = {
   leadRole : {
      type: 'String',
     optional: true
-  }, 
+  },
   leadScore : {
      type: 'String',
     optional: true
-  }, 
+  },
   gender : {
       type: 'Boolean',
       label: "Gender",
@@ -267,14 +340,14 @@ json.Person = {
       autoform: {
          type: "boolean-radios",
          trueLabel: "Male",
-         falseLabel: "Female", 
+         falseLabel: "Female",
          value: false
-      },  
+      },
   },
   leadStatus : {
      type: 'String',
     optional: true
-  },  
+  },
   dateOfBirth: {
     type: 'Date',
     optional: true
@@ -307,69 +380,32 @@ json.Person = {
   },
   'address.postalCode': {
     type: String,
-    optional: true, 
+    optional: true,
     label: "ZIP"
-  }, 
-  maplist: { 
-    type: String,    
-    optional: true,  
+  },
+  maplist: {
+    type: String,
+    optional: true,
+  },
+   subscribe: {
+    type: Boolean,
+    optional: true
+  },
+
+
+}
+
+Schemas.Person = new SimpleSchema(json.Person);
+
+
+
+Schemas.CampaignSettings = new SimpleSchema({
+    mailgateway: {
+    type: String, 
+    optional: true
+  },
+   smsgateway: {
+    type: String,
+    optional: true
   }
-
-  
-}
-
-Schemas.Person = new SimpleSchema(json.Person);  
-
-
-
-
-
-
-
-Schemas.TestForm = new SimpleSchema({
-    firstName: {
-    type: String,
-    optional: true
-  },
-   middleName: {
-    type: String,
-    optional: true
-  },
-  lastName: {
-    type: String,
-    optional: true
-  },
-  mail: {
-    type: 'email',        
-  }, 
-  
-}); 
-
-
-
-
-var g  = {
-    firstName: {
-    type: String,
-    optional: true
-  },
-   middleName: {
-    type: String,
-    optional: true
-  },
-  lastName: {
-    type: String,
-    optional: true
-  },
-  mail: {
-    type: 'email',        
-  }, 
-  
-}
-
-var gg = Object.keys(g);
-
-for (var i = 0; i < gg.length; i++) {
-  console.log(gg[i]," Object keys ",i);
-};
-
+});

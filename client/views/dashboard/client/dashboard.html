@@ -1,8 +1,10 @@
 <template name="dashboard">
   
   <div class="app-nav">
- 
-        <a  id="Leads" href="{{pathFor 'leads' }}" class="card">    
+     
+    
+
+        <a  id="Leads" href="{{subscribers.url}}" class="card">           
           <div title="Leads" class="fx fctr fxc fh">
 
             <i class="fa fa-users gicon"></i>
@@ -10,7 +12,7 @@
           </div>
         </a>
 
-        <a  id="Mails" href="{{pathFor 'mails'}}" class="card">
+        <a  id="Mails" href="{{mails.url}}" class="card"> 
           <div title="Mails" class="fx fctr fxc fh">
 
             <i class="fa fa-envelope  gicon"></i>
@@ -27,7 +29,7 @@
           </div>
         </a>
 
-        <a id="Pages"   href="{{pathFor 'pages'}}" class="card">
+        <a id="Pages"   href="{{pages.url}}" class="card"> 
           <div title="Pages" class="fx fctr fxc fh">
 
             <i class="fa fa-paper-plane gicon"></i>
@@ -35,7 +37,7 @@
           </div>
         </a>
 
-        <a  id="Forms" href="{{pathFor 'forms' '1'}}" class="card">  
+        <a  id="Forms" href="{{forms.url}}" class="card">   
           <div title="Forms" class="fx fctr fxc fh">
 
             <i class="fa fa-table  gicon"></i>

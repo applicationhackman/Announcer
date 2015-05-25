@@ -150,6 +150,7 @@ a {
   align-items: center;
   padding-right: 8px; 
   overflow: auto;
+  flex-wrap:wrap; 
 }
 
 i.fa.fa-bullhorn {
@@ -529,3 +530,203 @@ i.fa.fa-arrow-left.tico {
 .card:hover{
   background: #ecf0f1;
 }
+
+.detailViewMore {
+  overflow: auto;
+  max-height: 80px;
+  margin-bottom: 4px;
+}
+
+
+
+
+/* workflow css */
+
+
+
+.demo {
+    /* for IE10+ touch devices */
+    touch-action:none;
+}
+
+.w {
+    padding: 16px;
+    position: absolute;
+    z-index: 4;
+    border: 1px solid #2e6f9a;
+    box-shadow: 2px 2px 19px #e0e0e0;
+    -o-box-shadow: 2px 2px 19px #e0e0e0;
+    -webkit-box-shadow: 2px 2px 19px #e0e0e0;
+    -moz-box-shadow: 2px 2px 19px #e0e0e0;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    cursor: move;
+    background-color: white;
+    font-size: 11px;
+    -webkit-transition: background-color 0.25s ease-in;
+    -moz-transition: background-color 0.25s ease-in;
+    transition: background-color 0.25s ease-in;
+}
+
+.w:hover {
+    background-color: #5c96bc;
+    color: white;
+
+}
+
+.aLabel {
+    -webkit-transition: background-color 0.25s ease-in;
+    -moz-transition: background-color 0.25s ease-in;
+    transition: background-color 0.25s ease-in;
+}
+
+.aLabel._jsPlumb_hover, ._jsPlumb_source_hover, ._jsPlumb_target_hover {
+    background-color: #1e8151;
+    color: white;
+}
+
+.aLabel {
+    background-color: white;
+    opacity: 0.8;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    border: 1px solid #346789;
+    cursor: pointer;
+}
+
+.ep {
+    position: absolute;
+    bottom: 37%;
+    right: 5px;
+    width: 1em;
+    height: 1em;
+    background-color: orange;
+    cursor: pointer;
+    box-shadow: 0 0 2px black;
+    -webkit-transition: -webkit-box-shadow 0.25s ease-in;
+    -moz-transition: -moz-box-shadow 0.25s ease-in;
+    transition: box-shadow 0.25s ease-in;
+}
+
+.ep:hover {
+    box-shadow: 0px 0px 6px black;
+}
+
+.statemachine-demo ._jsPlumb_endpoint {
+    z-index: 3;
+}
+
+
+.folder-card:hover{
+  background: gray;  
+}
+
+.folder-card:hover {
+  background: rgb(247, 247, 247);
+  color: darkgrey;
+  border: 1px ridge rgb(247, 247, 247);
+}
+
+.folder-card:active { 
+  background: rgb(239, 237, 237);
+  color: rgb(42, 34, 34);
+  border: 1px ridge rgb(247, 247, 247);
+}
+ 
+
+/*
+#opened {
+    left: 10em;
+    top: 5em;
+}
+
+#phone1 {
+    left: 35em;
+    top: 12em;
+    width: 7em;
+}
+
+#inperson {
+    left: 12em;
+    top: 23em;
+}
+
+#phone2 {
+    left: 28em;
+    top: 24em;
+}*/
+
+
+#opened {
+    left: 467px;
+    top: 8px;
+}
+
+#phone1 {
+    left: 664px;
+    top: 239px;    
+}
+
+#inperson {
+    left: 12px;
+    top: 23px;
+}
+
+#phone2 {
+    left: 204px;
+    top: 247px; 
+}
+
+#rejected {
+    left: 10px;
+    top: 35px; 
+}
+
+.dragHover {
+    border: 2px solid orange;
+}
+
+path, ._jsPlumb_endpoint { cursor:pointer; }
+
+
+i.fa.fa-home {
+  font-size: 28px;
+}
+
+
+
+#Leads{
+  background: gray;
+  color: white;
+}
+
+#Forms{
+  background: gray;
+  color: white;
+}
+
+
+#Pages{ 
+  background: #16a085;
+  color: white;
+}
+
+#Socials{  
+  background: #16a085;
+  color: white;
+}
+
+#Mails{  
+  background: #2c3e50;  
+  color: white;
+}
+
+#Workflows{
+  background: #2c3e50;  
+  color: white;  
+}
+
+
+  

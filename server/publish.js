@@ -4,7 +4,10 @@ Meteor.publish(null, function () {
     Folders.find(),
     Lists.find(),
     Pages.find(),      
-    FormsCollections.find() 
+    Mails.find(),      
+    FormsCollections.find(),
+    WebForms.find(),
+    CampaignSettings.find() 
   ];
 });
 

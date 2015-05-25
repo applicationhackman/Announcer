@@ -1,7 +1,7 @@
 Template.addlead.helpers({  
   people: function () {
 
-  	console.log("folders are here ",People.find());  
+  	alert("folders are here ",People.find());  
     return People.find();
   }
 });

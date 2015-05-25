@@ -120,10 +120,6 @@ createList  : function(ev, jQ, data){
       data  = first;
     }
 
-    console.log(" CSK ",data);
-
-    console.log(" Rename " ,data['_id']);
-
 
     $( "#addfolder" ).dialog({
               width: 400 ,
@@ -148,14 +144,7 @@ createList  : function(ev, jQ, data){
                         parents: [data["_id"]]
                     }
                     var newList = Lists.insert(list);
-
-                  console.log(" data['lists'] ",data['lists']);
-              
-
-                  // CollectionElements[newList] = new Mongo.Collection(newList);
-                  // CollectionElements[newList].attachSchema(Schemas.List); 
-
-                  console.log("new Collection list item ",CollectionElements);  
+                  
 
                   if(data['lists'] == undefined){
                     data['lists'] = [];
@@ -167,7 +156,7 @@ createList  : function(ev, jQ, data){
                   Folders.update(data["_id"],{$set: {lists: data['lists']}});
 
 
-                  // $(".ui-dialog-titlebar-close").click();
+                  $(".ui-dialog-titlebar-close").click();
 
                   }.bind(null, this,data)
                 },
@@ -254,7 +243,153 @@ createPage  : function(ev, jQ, data){
 
 },
 
-delete : function(ev, jQ, data){
+
+
+createMail  : function(ev, jQ, data){
+
+
+
+    var data = (data['_id'] !== undefined) ? data : breadcrumbs[breadcrumbs.length-1];
+
+    console.log("data is on ",data);
+
+    if(data == undefined) {
+      data  = first;
+    }
+
+  
+
+
+    $( "#addfolder" ).dialog({
+              width: 400 ,
+              title : "Create mail",
+              modal: true,
+              buttons: [
+                {
+                  text: "OK",
+                  click: function(win, data, ev) {
+
+                  var userMail = Meteor.user()['emails'][0]['address'];
+
+                  console.log("data is on page ",data," data is ",data['pages']);
+
+                  var mail  = {
+                        Name:$("#foldername").val(),
+                        CreatedBy:userMail,
+                        ModifiedBy:userMail,
+                        CreatedTime:new Date().toDateString(),
+                        ModifiedTime:new Date().toDateString(),
+                        mails: [],
+                        parents: [data["_id"]]
+                    }
+                    var newMail = Mails.insert(mail); 
+
+                    console.log("newMail is ",newMail," new page of id ",newMail["_id"]);
+
+                    if(data['mails'] == undefined){
+                      data['mails'] = [];      
+                    } 
+                  data['mails'].push(newMail);
+
+                  console.log(mails," mail ",data['mails']); 
+
+                  Folders.update(data["_id"],{$set: {mails: data['mails']}});     
+
+
+                  $(".ui-dialog-titlebar-close").click();
+
+                  }.bind(null, this,data)
+                },
+                {
+                  text: "Cancel",
+                  click: function() {
+                     console.log("Cancel is ",this);
+                     $( this ).dialog( "close" );
+                  }
+                }
+              ]
+            });
+
+
+},
+
+createForm  : function(ev, jQ, data){
+
+
+
+    var data = (data['_id'] !== undefined) ? data : breadcrumbs[breadcrumbs.length-1];
+
+    console.log("data is on ",data);
+
+    if(data == undefined) {
+      data  = first;
+    }
+
+    console.log(" CSK ",data);
+
+    console.log(" Rename " ,data['_id']);
+
+
+    $( "#addfolder" ).dialog({
+              width: 400 ,
+              title : "Create Form",
+              modal: true,
+              buttons: [
+                {
+                  text: "OK",
+                  click: function(win, data, ev) {
+
+                  var userMail = Meteor.user()['emails'][0]['address'];
+
+                  console.log("data is on page ",data," data is ",data['pages']);
+
+                  var form  = {
+                        Name:$("#foldername").val(),
+                        CreatedBy:userMail,
+                        ModifiedBy:userMail,
+                        CreatedTime:new Date().toDateString(), 
+                        ModifiedTime:new Date().toDateString(),
+                        webforms: [],
+                        data : "", 
+                        parents: [data["_id"]]
+                    }
+
+                    console.log("form ",form); 
+ 
+
+                    var newForm = WebForms.insert(form);  
+
+                    console.log("newForm is ",newForm," new page of id ",newForm["_id"]);
+
+
+                    if(data['webforms'] == undefined){
+                      data['webforms'] = [];      
+                    }
+                  data['webforms'].push(newForm);
+
+                  console.log(form," page ",data['webforms']); 
+
+                  Folders.update(data["_id"],{$set: {webforms: data['webforms']}});     
+
+
+                  $(".ui-dialog-titlebar-close").click();
+
+                  }.bind(null, this,data)
+                },
+                {
+                  text: "Cancel",
+                  click: function() {
+                     console.log("Cancel is ",this);
+                     $( this ).dialog( "close" );
+                  }
+                }
+              ]
+            });
+
+
+},
+
+delete : function(ev, jQ, data){ 
 
 
 
@@ -262,7 +397,7 @@ delete : function(ev, jQ, data){
 
 
     var parent   = Folders.findOne(data["_id"]);
-
+ 
     Folder.recursiveFolderDelete(parent["children"]); 
 
 

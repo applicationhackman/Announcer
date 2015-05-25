@@ -3,9 +3,16 @@
 	<div class="fx fh fw fxc" id="leads">
 
 
-
+				
 
 				<div class="bcrumbrow">
+
+				<a class="bcrumb"  href="{{pathFor 'dashboard'}}">   			
+							<div class="fx fctr fh fxmid">
+								<i class="fa fa-home"></i>
+								<div class="details"> Home  </div> 
+							</div>					
+				</a>
 
 				{{#with home}}
 
@@ -16,7 +23,7 @@
 							</div>
 					</a>
 
-				{{/with}}
+				{{/with}} 
 
 			    {{#each this.breadcrumbs}}
 
@@ -40,7 +47,29 @@
 
 					{{#each this.lists}}
 
-					{{> list this}}
+						{{> list this}}
+
+					{{/each}}
+
+
+
+					{{#each this.forms}} 
+
+						{{> form this}}  
+
+					{{/each}}
+
+
+					{{#each this.pages}} 
+
+						{{> pagee this}}    
+
+					{{/each}}
+
+
+					{{#each this.mails}} 
+
+						{{> mail this}}  
 
 					{{/each}}
 
@@ -82,7 +111,7 @@
 						<div class="details fx fxmid finfo"> {{Name}} </div>
 			</a>
 
-			<div class="fx frap"> 
+			<div class="fx frap detailViewMore">  
 
 				<div class="fx fxc ">
 					<div class="fx detRow frap">
@@ -154,3 +183,52 @@
 
 	</div>
 </template>
+
+
+<template name="form">  
+	<div class="folder-card " cmenu="addlist">
+
+			<a class="fx fctr fh fxmid fxc"  href="{{pathFor 'forms' _id}}">  
+				<div class="flist-c">
+					<i class="fa fa-table flist"></i>
+				</div>
+
+				<div class="details"> {{Name}}  </div>
+			</a>
+
+
+	</div>
+</template>
+
+<template name="page">   
+	<div class="folder-card " cmenu="addlist">
+
+			<a class="fx fctr fh fxmid fxc"  href="{{pathFor 'forms' _id}}">  
+				<div class="flist-c">
+					<i class="fa fa-paper-plane flist"></i>  
+				</div>
+
+				<div class="details"> {{Name}}  </div>
+			</a>
+
+
+	</div>
+</template>
+
+<template name="mail">   
+	<div class="folder-card " cmenu="addlist">
+
+			<a class="fx fctr fh fxmid fxc"  href="{{pathFor 'mails' _id}}">    
+
+				<div class="flist-c">
+					<i class="fa fa-medium flist"></i>   
+				</div>
+
+				<div class="details"> {{Name}}  </div>
+			</a>
+
+
+	</div>
+</template>
+ 
+ 

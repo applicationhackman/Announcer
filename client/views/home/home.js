@@ -44,17 +44,43 @@ Template.home.events({
 
 Meteor.startup(function() {
 
+            subscribers = Folders.findOne({Name:"Subscribers"});
 
-    
+            webforms = Folders.findOne({Name:"Webforms"});            
 
-            var Subscribers = Folders.findOne({"Name":"Subscribers"}); 
+            webpages = Folders.findOne({Name:"Pages"});
 
-            console.log("Subscribers has ",Subscribers); 
+            mails = Folders.findOne({Name:"Mails"}); 
 
 
-    
 
-    console.log("on startup ",Meteor.Mandrill);
+            if(webpages === undefined)
+            {          
+                console.log(" going to add Pages",webforms);                          
+                // Folders.insert({Name:"Pages",CreatedBy:"Admin",ModifiedBy:"Admin",CreatedTime:new Date().toDateString(),ModifiedTime:new Date().toDateString(),children:[],parents:[],pages:[]});
+            }
+
+
+            if(subscribers === undefined) 
+            {
+                console.log(" going to add Subscribers"); 
+                // Folders.insert({Name:"Subscribers",CreatedBy:"Admin",ModifiedBy:"Admin",CreatedTime:new Date().toDateString(),ModifiedTime:new Date().toDateString(),children:[],parents:[]});
+            }
+
+            if(webforms === undefined)
+            {                    
+                console.log(" going to add Webforms"); 
+                // Folders.insert({Name:"Webforms",CreatedBy:"Admin",ModifiedBy:"Admin",CreatedTime:new Date().toDateString(),ModifiedTime:new Date().toDateString(),children:[],parents:[]});
+            }
+
+            if(mails === undefined)
+            {                    
+                console.log(" going to add Mails"); 
+                // Folders.insert({Name:"Mails",CreatedBy:"Admin",ModifiedBy:"Admin",CreatedTime:new Date().toDateString(),ModifiedTime:new Date().toDateString(),children:[],parents:[]});
+            }
+
+
+            // console.log("subscribers ",subscribers," webforms ",webforms," webpages ",webpages," Mails ",mails);   
 
    
 });

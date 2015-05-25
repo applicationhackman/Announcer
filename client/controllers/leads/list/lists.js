@@ -23,7 +23,7 @@ Template.lists.helpers({
 
     console.log( filteredPeople," filteredPeople ",filterList," len ",filteredPeople.length); 
 
-     filteredPeople  = (filteredPeople.length == 0) ? People.find().fetch() : filteredPeople; 
+     filteredPeople  = (filteredPeople.length == 0 && filterList == undefined) ? People.find().fetch() : filteredPeople;  
     
 
     return filteredPeople; 
@@ -109,7 +109,7 @@ Template.lists.events({
                     People.remove(ui.id);
                 })
 
-              $( this ).dialog( "close" );
+              $(this).dialog( "close" );
             },
             Cancel: function() {
               $( this ).dialog( "close" );

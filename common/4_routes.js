@@ -1,3 +1,6 @@
+
+var renderingCount = 0;
+
 Router.configure({
   notFoundTemplate: 'not_found',
   loadingTemplate: 'loading',
@@ -14,110 +17,21 @@ if (Meteor.isClient) {
 
 function  mainData() {
 
+	console.log(" main data is here ");
 
-
-
-	console.log(" main data is here "); 
-
-		// if(Folders.findOne() !== undefined){
-
-		// 	var Leads 		= Folders.findOne({Name:"Leads"});
-		// 	var Mails 		= Folders.findOne({Name:"Mails"});
-		// 	var Forms 		= Folders.findOne({Name:"Forms"});
-		// 	var Pages 		= Folders.findOne({Name:"Pages"});
-		// 	var Workflows 	= Folders.findOne({Name:"Workflows"});
-
-
-		// 	if(Leads === undefined)
-	 //  		{
-	 //  			Folders.insert({Name:"Leads",CreatedBy:"Admin",ModifiedBy:"Admin",CreatedTime:new Date().toDateString(),ModifiedTime:new Date().toDateString(),children:[],parents:[]});
-	 //  		}
-
-	 //  		if(Mails === undefined)
-	 //  		{
-	 //  			Folders.insert({Name:"Mails",CreatedBy:"Admin",ModifiedBy:"Admin",CreatedTime:new Date().toDateString(),ModifiedTime:new Date().toDateString(),children:[],parents:[]});
-	 //  		}
-
-	 //  		if(Forms === undefined)
-	 //  		{
-	 //  			Folders.insert({Name:"Forms",CreatedBy:"Admin",ModifiedBy:"Admin",CreatedTime:new Date().toDateString(),ModifiedTime:new Date().toDateString(),children:[],parents:[]});
-	 //  		}
-
-
-	 //  		if(Pages === undefined)
-	 //  		{
-	 //  			Folders.insert({Name:"Pages",CreatedBy:"Admin",ModifiedBy:"Admin",CreatedTime:new Date().toDateString(),ModifiedTime:new Date().toDateString(),children:[],parents:[]});
-	 //  		}
-
-
-	 //  		if(Workflows === undefined)
-	 //  		{
-	 //  			Folders.insert({Name:"Workflows",CreatedBy:"Admin",ModifiedBy:"Admin",CreatedTime:new Date().toDateString(),ModifiedTime:new Date().toDateString(),children:[],parents:[]});
-	 //  		}
-
-
-
-		// 	console.log("Finding Leads folder ",Folders.findOne({Name:"Leads"}));
-
-		// 	console.log("Finding Mails folder ",Folders.findOne({Name:"Mails"}));
-
-		// 	console.log("Finding Forms folder ",Folders.findOne({Name:"Forms"}));
-
-		// 	console.log("Finding Pages folder ",Folders.findOne({Name:"Pages"}));
-
-		// 	console.log("Finding Workflows folder ",Folders.findOne({Name:"Workflows"}));
-
-
-		// 	return  {
-		// 				leads : Leads["_id"],
-		// 				mails : Mails["_id"],
-		// 				forms  : Forms["_id"],
-		// 				pages  : Pages["_id"],
-		// 				workflows  : Workflows["_id"]
-		// 			}
-
-
-
-		// }
-
-
-	}
+}
 
 
 
 
 Router.route('/', {name: 'home',
 
-	data : function (argument) { 
-
-
-		
+	data : function (argument) {
 
 
 	}
 });
 
-
-
-Router.route('/quickform', {name: 'quickform'});
-Router.route('/fieldvalues', {name: 'fieldvalues'});
-Router.route('/insertaf', {name: 'insertaf'});
-Router.route('/updateaf', {name: 'updateaf'});
-Router.route('/qfdetails', {name: 'qfdetails'});
-Router.route('/types', {name: 'types'});
-Router.route('/select', {name: 'select'});
-// Router.route('/update-each', {
-//   name: 'update-each',
-//   waitOn: function () {
-//     return Meteor.subscribe("allItems");
-//   }
-// });
-Router.route('/updatepush', {
-  name: 'updatepush'
-});
-Router.route('/update-array-item', {
-  name: 'updateArrayItem'
-});
 
 
 
@@ -126,27 +40,52 @@ Router.route('/update-array-item', {
 
 
 
-			first = Folders.findOne({Name:"Subscribers"});
 
-			console.log("Subscribers first folder ",first); 
-			
-			if(first == undefined && !first) 
-	  		{
+			subscribers = Folders.findOne({Name:"Subscribers"});
 
- 
-	  			console.log(" going to add Subscribers",first);  
+			webforms = Folders.findOne({Name:"Webforms"});
 
-	  			// Folders.insert({Name:"Subscribers",CreatedBy:"Admin",ModifiedBy:"Admin",CreatedTime:new Date().toDateString(),ModifiedTime:new Date().toDateString(),children:[],parents:[]});
+			webpages = Folders.findOne({Name:"Pages"});
 
-	  		}
+			webmails = Folders.findOne({Name:"Mails"});
+
+			first =  subscribers;
+
 
 
 			var Leads = Folders.findOne({"_id":this.params._id})
 
-	
+
+			if(Leads !== undefined){ 
+
+					if(Leads.Name == "Subscribers"){
+						first = subscribers;
+					}
+
+					if(Leads.Name == "Webforms"){
+						first = webforms;	
+					}
+
+					if(Leads.Name == "Pages"){
+						first = webpages;	 
+					}
+
+					if(Leads.Name == "Mails"){ 
+						first = webmails;	   
+					}
+
+					console.log(Leads.Name," found Subscribers",webforms," renderingCount ",Leads);  
+			}
+			
+
+			
+
 
 			var children  = [];
       		var clists = [];
+      		var cforms = [];
+      		var cpages = [];
+      		var cmails = [];
 
 
 			if(Leads !== undefined){
@@ -159,17 +98,59 @@ Router.route('/update-array-item', {
 
 				};
 
-        if(Leads.lists !== undefined){
+		
+			var elements = [];
 
-          for (var i = 0; i < Leads.lists.length; i++) {
 
-            clists.push(Lists.findOne(Leads.lists[i]));
+			if(Leads.lists !== undefined){
 
-          };
+				elements = Leads.lists;
 
-          console.log("clists ",clists);
-        }
+				for (var i = 0; i < elements.length; i++) {	          		
+          	
+            		clists.push(Lists.findOne(elements[i]));
 
+          		};	
+			}
+
+			if(Leads.webforms !== undefined){
+				
+					elements = Leads.webforms;
+				
+					for (var i = 0; i < elements.length; i++) {	          		
+	          	
+	            		cforms.push(WebForms.findOne(elements[i]));
+
+	          		};	
+			}
+
+
+			if(Leads.pages !== undefined){
+				
+					elements = Leads.pages;
+				
+					for (var i = 0; i < elements.length; i++) {	          		
+	          	
+	            		cpages.push(Pages.findOne(elements[i])); 
+
+	          		};	
+			}
+
+
+			if(Leads.mails !== undefined){
+				
+					elements = Leads.mails;
+				
+					for (var i = 0; i < elements.length; i++) {	          		
+	          	
+	            		cmails.push(Mails.findOne(elements[i])); 
+
+	          		};	
+			}
+
+
+
+	        // console.log(clists," Leads is main folder ",Leads," elements ",elements);  
 
 				breadcrumbs   = [];
 
@@ -187,21 +168,34 @@ Router.route('/update-array-item', {
 
 				}
 
+
+				
+
 				parent(id);
 				breadcrumbs.reverse();
 
 				var last;
 				if(breadcrumbs.length == 0){
-					
 					last  = first;
-						
 				}else{
 					last = breadcrumbs[breadcrumbs.length-1];
-				} 
+				}
+				
 
-				console.log(last," breadcrumbs ",breadcrumbs[breadcrumbs.length-1]);  
+				
+				/*
+				 	Redifining first folder   
+				*/
 
-				return {'breadcrumbs':breadcrumbs,'children':children,'home':first,'lists':clists,"last":last}; 
+				if(breadcrumbs[0] !== undefined){
+
+						first = Folders.findOne(breadcrumbs[0]['parents'][0]); 						
+				}
+
+
+				renderingCount += 1;        
+
+				return {'breadcrumbs':breadcrumbs,'children':children,'home':first,'lists':clists,'forms':cforms,"last":last,'mails':cmails,'pages':cpages};
 
 			}
 
@@ -210,18 +204,11 @@ Router.route('/update-array-item', {
 
 
 
-
-
-
-
-
-
-
-// Router.route('/quickleadadd', {path: 'quickleadadd/:_id',data: test}); 
+// Router.route('/quickleadadd', {path: 'quickleadadd/:_id',data: test});
 
 Router.route('/addlead', {name: 'addlead'});
 
-// Router.route('/lists', {path: 'lists/:_id'});    
+// Router.route('/lists', {path: 'lists/:_id'});
 
 
 /* temp routes are here */
